@@ -1,17 +1,17 @@
 package com.miu.finalProject.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class Section {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int sectionID;
 	private String sectionName;
-//	@OneToMany(cascade=CascadeType.ALL,mappedBy="section")
-	//private Set<Course> courseList = new HashSet<>();
+	@OneToMany(cascade= CascadeType.ALL)
+	private Set<Course> courseList = new HashSet<>();
 	//private Entry entry;
 
 	public Section() {
@@ -40,9 +40,9 @@ public class Section {
 		this.sectionName = sectionName;
 	}
 
-//	public Set<Course> getCourseList() {
-//		return courseList;
-//	}
+	public void addCourse(Course course) {
+		courseList.add(course);
+	}
 //
 //	public void setCourseList(Set<Course> courseList) {
 //		this.courseList = courseList;

@@ -1,12 +1,8 @@
 package com.miu.finalProject.domain;
+import org.springframework.format.annotation.DateTimeFormat;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
-
 @Entity
 public class Course {
     @Id
@@ -15,7 +11,9 @@ public class Course {
 
     private String Coursename;
     private String courseCode;
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date startDate;
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     private Date endDate;
 
     public Course() {

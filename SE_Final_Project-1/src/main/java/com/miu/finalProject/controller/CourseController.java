@@ -16,14 +16,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/courses")
 public class CourseController {
-
     private List<Course> theCourse;
-
-
-
     @Autowired
     CourseService courseService;
-
 
     @GetMapping("/list")
     public String listCourse(Model model){
@@ -31,6 +26,7 @@ public class CourseController {
         model.addAttribute("courses",courses);
         return "course/list-courses";
     }
+
 //    @GetMapping("/list1")
 //    public List<Course> listCourse1(){
 //        List<Course> courses = courseService.findAll();
