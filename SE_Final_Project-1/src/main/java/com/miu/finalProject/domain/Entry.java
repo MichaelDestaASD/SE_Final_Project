@@ -1,82 +1,49 @@
 package com.miu.finalProject.domain;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int entryID;
+    private long id;
 
-
-    private String entryName;
-    private int FPPNum;
-    private int MPPNum;
-    private Date startDate;
-    private Date endDate;
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "entry")
-    private Set<Block> blockList = new HashSet<Block>();
+    private String month;
+    private String year;
 
     public Entry() {
     }
 
-    public int getEntryID() {
-        return entryID;
+    public Entry(long id, String month, String year) {
+        this.id = id;
+        this.month = month;
+        this.year = year;
     }
 
-
-    public void setEntryID(int entryID) {
-        this.entryID = entryID;
+    public long getId() {
+        return id;
     }
 
-    public int getFPPNum() {
-        return FPPNum;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setFPPNum(int FPPNum) {
-        this.FPPNum = FPPNum;
+    public String getMonth() {
+        return month;
     }
 
-    public int getMPPNum() {
-        return MPPNum;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
-    public void setMPPNum(int MPPNum) {
-        this.MPPNum = MPPNum;
+    public String getYear() {
+        return year;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public void setYear(String year) {
+        this.year = year;
     }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public void addBlock(Block block){
-        blockList.add(block);
-        block.setEntry(this);
-    }
-
-    public String getEntryName() {
-        return entryName;
-    }
-
-    public void setEntryName(String entryName) {
-        this.entryName = entryName;
-    }
-
 }

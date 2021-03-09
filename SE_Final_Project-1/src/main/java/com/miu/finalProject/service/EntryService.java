@@ -1,12 +1,14 @@
 package com.miu.finalProject.service;
 
-import java.util.List;
 
 import com.miu.finalProject.domain.Entry;
 
+
+import java.util.List;
+
 public interface EntryService {
     public void save(Entry entry);
-    public Entry getEntryByEntryID(int entryid);
-    public Entry getEntryByEntryName(String entryName);
-    public List<Entry> getAllEntry();
+    public void deleteById(long id);
+    public List<Entry> findAll();
+    public Entry findById(long id);
 }

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SE_Final_Project-1/MUMSchedEntryBlockDemo.iml" filepath="$PROJECT_DIR$/SE_Final_Project-1/MUMSchedEntryBlockDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SE_Final_Project-1/MUMSchedEntryBlockApplicationApp.iml" filepath="$PROJECT_DIR$/SE_Final_Project-1/MUMSchedEntryBlockApplicationApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SE_Final_Project.iml" filepath="$PROJECT_DIR$/.idea/SE_Final_Project.iml" />
     </modules>
   </component>
