@@ -18,6 +18,7 @@ public class Entry {
     }
 
     public Entry(long id, String month, String year) {
+
         this.id = id;
         this.month = month;
         this.year = year;
