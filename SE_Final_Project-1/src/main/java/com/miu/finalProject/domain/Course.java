@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Course {
@@ -14,13 +15,13 @@ public class Course {
 
     private String Coursename;
     private String courseCode;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
 
     public Course() {
     }
 
-    public Course(long id, String coursename,String courseCode, String startDate, String endDate) {
+    public Course(long id, String coursename,String courseCode, Date startDate, Date endDate) {
         this.id = id;
          this.Coursename = coursename;
         this.startDate = startDate;
@@ -45,19 +46,19 @@ public class Course {
         Coursename = coursename;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
