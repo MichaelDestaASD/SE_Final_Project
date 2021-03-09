@@ -20,6 +20,10 @@ public class Course {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
 
+    @JoinColumn(nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Faculty faculty;
+
     public Course() {
     }
 
@@ -70,5 +74,9 @@ public class Course {
 
     public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 }

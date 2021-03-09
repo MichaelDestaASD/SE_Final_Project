@@ -1,8 +1,9 @@
-package com.miu.finalProject.service;
+package com.miu.finalProject.serviceImpl;
 
 import com.miu.finalProject.dao.EntryDao;
 import com.miu.finalProject.domain.Entry;
 
+import com.miu.finalProject.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EntryServiceImpl implements EntryService{
+public class EntryServiceImpl implements EntryService {
 
     @Autowired
     EntryDao entryDao;

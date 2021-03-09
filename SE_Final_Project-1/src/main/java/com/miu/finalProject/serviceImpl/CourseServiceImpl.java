@@ -1,8 +1,9 @@
-package com.miu.finalProject.service;
+package com.miu.finalProject.serviceImpl;
 
 import com.miu.finalProject.dao.CourseDao;
 import com.miu.finalProject.domain.Course;
 
+import com.miu.finalProject.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CourseServiceImpl implements CourseService{
+public class CourseServiceImpl implements CourseService {
 
     @Autowired
     CourseDao courseDao;
