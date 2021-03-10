@@ -2,8 +2,10 @@ package com.miu.finalProject.controller;
 
 
 import com.miu.finalProject.domain.Course;
+import com.miu.finalProject.domain.Faculty;
 import com.miu.finalProject.service.CourseService;
 
+import com.miu.finalProject.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ public class CourseController {
 
     @Autowired
     CourseService courseService;
+    @Autowired
+    FacultyService facultyService;
 
 
     @GetMapping("/list")
@@ -41,6 +45,8 @@ public class CourseController {
     @RequestMapping("/showFormForAdd")
     public String showForm(Model model){
         Course theCourse = new Course();
+        List<Faculty>facultyList=facultyService.findAll();
+        model.addAttribute("faculties",facultyList);
         model.addAttribute("course", theCourse);
           return "course/course-form";
     }
@@ -61,6 +67,8 @@ public class CourseController {
     @GetMapping("/update")
     public String update(@RequestParam("courseId") int Id, Model model){
         Course course = courseService.findById(Id);
+        List<Faculty>facultyList=facultyService.findAll();
+        model.addAttribute("faculties",facultyList);
         model.addAttribute("course", course);
         return "course/course-form";
     }

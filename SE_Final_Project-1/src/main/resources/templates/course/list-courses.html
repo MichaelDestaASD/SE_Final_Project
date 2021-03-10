@@ -22,6 +22,7 @@
                 <th>Course Code</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Faculty</th>
                 <th>Action</th>
 
             </tr>
@@ -34,6 +35,7 @@
                 <td th:text="${course.getCourseCode()}"/>
                 <td th:text="${course.getStartDate()}"/>
                 <td th:text="${course.getEndDate()}"/>
+                <td th:text="${course.getFaculty().facultyName}"/>
 
             <td>
             <!-- Add "update" button/link -->

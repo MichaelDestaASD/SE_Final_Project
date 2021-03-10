@@ -21,7 +21,7 @@ public class Faculty {
 	private String email;
 
 
-	@JoinColumn(nullable = false)
+//	@JoinColumn(nullable = true)
 	@OneToMany(fetch = FetchType.EAGER)
 	private Set<Course> courseList = new HashSet<Course>();
 
