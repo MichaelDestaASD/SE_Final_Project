@@ -21,7 +21,7 @@
     <hr>
 
     <!-- Add a button -->
-    <a th:href="@{/assignFaculty}"
+    <a th:href="@{/faculty/assignFaculty}"
        class="btn btn-primary btn-sm mb-3">
         Add New faculty
     </a>
@@ -45,13 +45,13 @@
 
             <td>
                 <!-- Add "update" button/link -->
-                <a th:href="@{update(facultyID=${f.facultyID})}"
+                <a th:href="@{/faculty/update(facultyID=${f.facultyID})}"
                    class="btn btn-info btn-sm">
                     Update
                 </a>
 
                 <!-- Add "delete" button/link -->
-                <a th:href="@{/deleteFaculty(facultyID=${f.facultyID})}"
+                <a th:href="@{/faculty/deleteFaculty(facultyID=${f.facultyID})}"
                    class="btn btn-danger btn-sm"
                    onclick="if (!(confirm('Are you sure you want to delete this Student?'))) return false">
                     Delete

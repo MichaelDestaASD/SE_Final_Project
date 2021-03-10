@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("/faculty")
 public class FacultyController {
 
     @Autowired
     FacultyService facultyService;
 
-    @GetMapping("/faculty")
+    @GetMapping("/")
     public String assignFaculty(@ModelAttribute("faculty") Faculty faculty, Model model){
 
         List<Faculty> faculties1 = facultyService.findAll();
@@ -36,7 +37,7 @@ public class FacultyController {
     @PostMapping("/save")
     public String saveCourse(@ModelAttribute("faculty") Faculty faculty){
         facultyService.save(faculty);
-        return "redirect:/faculty";
+        return "redirect:/faculty/";
     }
     @GetMapping("/update")
     public String update(@RequestParam("facultyID") Long Id, Model model){
@@ -51,7 +52,7 @@ public class FacultyController {
         facultyService.deleteById(id);
 
 
-        return "redirect:/faculty";
+        return "redirect:/faculty/";
 
     }
 
