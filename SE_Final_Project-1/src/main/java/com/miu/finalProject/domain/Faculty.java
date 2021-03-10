@@ -21,14 +21,15 @@ public class Faculty {
 	private String email;
 
 
-	@JoinColumn(nullable = false)
-	@OneToMany(fetch = FetchType.EAGER)
+
+	@ManyToMany(mappedBy = "facultyList")
 	private Set<Course> courseList = new HashSet<Course>();
 
 
 	public void addCourse(Course course){
 		courseList.add(course);
-		course.setFaculty(this);
+		//course.setFaculty(this);
+		course.addFaculty(this);
 
 	}
 }

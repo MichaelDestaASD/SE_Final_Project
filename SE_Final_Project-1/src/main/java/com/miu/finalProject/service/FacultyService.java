@@ -15,5 +15,5 @@ public interface FacultyService {
 
     List<Faculty> findAll();
 
-    Optional<Faculty> findById(Long id);
+    Faculty findById(Long id);
 }

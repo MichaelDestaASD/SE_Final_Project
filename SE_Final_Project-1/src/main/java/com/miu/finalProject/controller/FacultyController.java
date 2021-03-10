@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,7 @@ public class FacultyController {
     public String assignFaculty(@ModelAttribute("faculty") Faculty faculty, Model model){
 
         List<Faculty> faculties1 = facultyService.findAll();
+        System.out.println("....................." +Arrays.toString(faculties1.toArray()));
 
         model.addAttribute("faculty",faculties1);
 
@@ -41,7 +43,7 @@ public class FacultyController {
     }
     @GetMapping("/update")
     public String update(@RequestParam("facultyID") Long Id, Model model){
-        Optional<Faculty> faculty = facultyService.findById(Id);
+        Faculty faculty = facultyService.findById(Id);
         model.addAttribute("faculty", faculty);
         return "/Faculty/assign";
     }

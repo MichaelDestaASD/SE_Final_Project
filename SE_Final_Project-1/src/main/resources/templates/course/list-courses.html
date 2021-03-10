@@ -22,6 +22,8 @@
                 <th>Course Code</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>faculty</th>
+                <th>faculty</th>
                 <th>Action</th>
 
             </tr>
@@ -34,8 +36,14 @@
                 <td th:text="${course.getCourseCode()}"/>
                 <td th:text="${course.getStartDate()}"/>
                 <td th:text="${course.getEndDate()}"/>
+                <td th:each="fac, i : ${course.getFacultyList()}">
+<!--                    <div th:text="${stats.index + 1}"></div>-->
+                    <span th:text="${fac.getFacultyName() }"></span>
+                </td>
 
-            <td>
+
+
+                <td>
             <!-- Add "update" button/link -->
             <a th:href="@{/courses/update(courseId=${course.id})}"
                class="btn btn-info btn-sm">

@@ -26,6 +26,15 @@
 
           <input type="date" th:field="*{endDate}" class="form-control mb-4 col-4" placeholder="End Date">
 
+<!--          <input type="hidden" th:field="*{faculty.facultyFacultyID}">-->
+          <label for="fac">Faculty</label>
+          <select class="form-control mb-4 col-4" id="fac"  th:field="*{facultyList}" size="5" multiple="multiple" >
+              <option th:each="fac : ${faculties}"
+                      th:value="${{fac}}"
+                      th:text="${fac.getFacultyName()}">
+              </option>
+          </select>
+
 
           <button type="submit" class="btn btn-info col-2">Save</button>
 
