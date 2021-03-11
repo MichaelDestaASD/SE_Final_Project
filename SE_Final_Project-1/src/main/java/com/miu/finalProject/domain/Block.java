@@ -1,5 +1,7 @@
 package com.miu.finalProject.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 import java.time.LocalDate;
@@ -9,10 +11,12 @@ import java.util.Date;
 public class Block {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int blockID;
+    private long blockID;
 
     private String blockName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endDate;
     private int FPPNum;
     private int MPPNum;
@@ -28,12 +32,15 @@ public class Block {
     public Entry getEntry(){
         return entry;
     }
+        public void setEntry(Entry entry){
+        this.entry = entry;
+    }
 
-    public int getBlockID() {
+    public long getBlockID() {
         return blockID;
     }
 
-    public void setBlockID(int blockID) {
+    public void setBlockID(long blockID) {
         this.blockID = blockID;
     }
 
@@ -77,9 +84,7 @@ public class Block {
         this.entryName = entryName;
     }
 
-    public void setEntry(Entry entry){
-        this.entry = entry;
-    }
+
 
     public String getBlockName() {
         return blockName;
@@ -92,8 +97,7 @@ public class Block {
 	@Override
 	public String toString() {
 		return "Block [blockID=" + blockID + ", blockName=" + blockName + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", FPPNum=" + FPPNum + ", MPPNum=" + MPPNum + ", entryName=" + entryName + ", entry="
-				+ entry + "]";
+				+ endDate + ", FPPNum=" + FPPNum + ", MPPNum=" + MPPNum + ", entryName=" + entryName + "]";
 	}
 
 }

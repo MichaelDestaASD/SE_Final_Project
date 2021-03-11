@@ -43,4 +43,18 @@ public class EntryServiceImpl implements EntryService {
         }
         return theEntry;
     }
+//    @Override
+//    public List<Entry> getAllEntry(){
+//        return entryDao.getAllEntry();
+//    }
+//
+//    @Override
+//    public Entry getEntryByEntryName(String entryName) {
+//        return entryDao.findEntryByEntryName(entryName);
+//    }
+//
+//    @Override
+//    public Entry getEntryByEntryID(int entryid) {
+//        return entryDao.findEntryByEntryID(entryid);
+//    }
 }

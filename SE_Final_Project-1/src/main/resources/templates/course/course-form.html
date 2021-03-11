@@ -34,11 +34,11 @@
                       th:text="${fac.getFacultyName()}">
               </option>
           </select>
-          <label for="stud">Faculty</label>
+          <label for="stud">Student</label>
           <select class="form-control mb-4 col-4" id="stud"  th:field="*{studentList}" size="40" multiple="multiple" >
               <option th:each="stud : ${students}"
                       th:value="${{stud}}"
-                      th:text="${stud.getEmail()}">
+                      th:text="${stud.getStudentID()}">
               </option>
           </select>
 
