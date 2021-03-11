@@ -22,7 +22,7 @@ public class FacultyController {
     public String assignFaculty(@ModelAttribute("faculty") Faculty faculty, Model model){
 
         List<Faculty> faculties1 = facultyService.findAll();
-        System.out.println("....................." +Arrays.toString(faculties1.toArray()));
+       // System.out.println("....................." +Arrays.toString(faculties1.toArray()));
 
         model.addAttribute("faculty",faculties1);
 

@@ -32,4 +32,14 @@ public class Faculty {
 		course.addFaculty(this);
 
 	}
+
+	@Override
+	public String toString() {
+		return "Faculty{" +
+				"facultyID=" + facultyID +
+				", facultyName='" + facultyName + '\'' +
+				", email='" + email + '\'' +
+			//	", courseList=" + courseList +
+				'}';
+	}
 }

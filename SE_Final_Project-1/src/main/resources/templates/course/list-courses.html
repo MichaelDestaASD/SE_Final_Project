@@ -22,8 +22,8 @@
                 <th>Course Code</th>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>faculty</th>
-                <th>faculty</th>
+                <th>Faculty view </th>
+                <th>Student view</th>
                 <th>Action</th>
 
             </tr>
@@ -36,10 +36,20 @@
                 <td th:text="${course.getCourseCode()}"/>
                 <td th:text="${course.getStartDate()}"/>
                 <td th:text="${course.getEndDate()}"/>
-                <td th:each="fac, i : ${course.getFacultyList()}">
-<!--                    <div th:text="${stats.index + 1}"></div>-->
-                    <span th:text="${fac.getFacultyName() }"></span>
+                <td>
+                    <a th:href="@{'/courses/faculties/' + ${course.getId()} }">View faculties</a>
                 </td>
+                <td>
+                    <a th:href="@{'/courses/students/' + ${course.getId()} }">View students</a>
+                </td>
+<!--                <td th:each="fac, i : ${course.getFacultyList()}">-->
+<!--&lt;!&ndash;                    <div th:text="${stats.index + 1}"></div>&ndash;&gt;-->
+<!--                    <span th:text="${fac.getFacultyName() }"></span>-->
+<!--                </td>-->
+<!--                <td th:each="stud, i : ${course.getStudentList()}">-->
+<!--                    &lt;!&ndash;                    <div th:text="${stats.index + 1}"></div>&ndash;&gt;-->
+<!--                    <span th:text="${stud.getStudentID() }"></span>-->
+<!--                </td>-->
 
 
 

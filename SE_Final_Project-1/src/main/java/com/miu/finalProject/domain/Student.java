@@ -1,66 +1,40 @@
 package com.miu.finalProject.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-
+    private int studentID;
 	private String firstName;
 	private String lastName;
 	private String email;
 
-	public Student(String firstName, String lastName, String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-	}
+	@ManyToMany(mappedBy = "studentList")
+	private Set<Course> courseList = new HashSet<Course>();
 
-	public Student() {
+	public void addCourse(Course course){
+		courseList.add(course);
+		//course.setFaculty(this);
+		course.addStudent(this);
 
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	@Override
-	public String toString() {
-		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+	public String toString(){
+		return "id "+ id + " studentID " + studentID + " firstName "+ firstName +
+				" lastName " + lastName + " email "+ email;
 	}
 
 }

@@ -3,9 +3,11 @@ package com.miu.finalProject.controller;
 
 import com.miu.finalProject.domain.Course;
 import com.miu.finalProject.domain.Faculty;
+import com.miu.finalProject.domain.Student;
 import com.miu.finalProject.service.CourseService;
 
 import com.miu.finalProject.service.FacultyService;
+import com.miu.finalProject.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,8 @@ public class CourseController {
     CourseService courseService;
     @Autowired
     FacultyService facultyService;
+    @Autowired
+    StudentService studentService;
 
 
     @GetMapping("/list")
@@ -49,8 +53,11 @@ public class CourseController {
     @RequestMapping("/showFormForAdd")
     public String showForm(Model model){
         Course theCourse = new Course();
+
         List<Faculty> faculties = facultyService.findAll();
-        System.out.println("_____________"+ faculties.get(0).getEmail());
+        List<Student> studentList = studentService.findAll();
+      //  System.out.println("_____________"+ faculties.get(0).getEmail());
+        model.addAttribute("students",studentList);
         model.addAttribute("faculties",faculties);
         model.addAttribute("course", theCourse);
         return "course/course-form";
@@ -74,9 +81,27 @@ public class CourseController {
     public String update(@RequestParam("courseId") int Id, Model model){
         Course course = courseService.findById(Id);
         List<Faculty>facultyList=facultyService.findAll();
+        List<Student> studentList = studentService.findAll();
+        model.addAttribute("students",studentList);
         model.addAttribute("faculties",facultyList);
         model.addAttribute("course", course);
         return "course/course-form";
     }
+    @GetMapping("/faculties/{courseid}")
+    public String getFaculties(Model model, @PathVariable Long courseid){
+        Course course = courseService.findById(courseid);
+        System.out.println("course.................." + course);
+        model.addAttribute("course",course);
+//        model.addAttribute("faculties", facultyService.findById(courseid));
+        return "course/faculty-list";
+    }
 
+    @GetMapping("/students/{courseid}")
+    public String getStudents(Model model, @PathVariable Long courseid){
+        Course course = courseService.findById(courseid);
+        System.out.println("course.................." + course);
+        model.addAttribute("course",course);
+//        model.addAttribute("faculties", facultyService.findById(courseid));
+        return "course/student-list";
+    }
 }
