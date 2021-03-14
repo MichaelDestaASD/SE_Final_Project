@@ -36,6 +36,13 @@ public class Course {
     )
 
     private List<Faculty> facultyList = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "Course_Section",
+            joinColumns = { @JoinColumn(name = "Course_id") },
+            inverseJoinColumns = { @JoinColumn(name = "section_id") }
+    )
+
+    private List<Section> sectionList = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "Course_Student",
@@ -51,7 +58,10 @@ public class Course {
         facultyList.add(faculty);
         faculty.addCourse(this);
     }
-
+    public void addSection(Section section){
+        sectionList.add(section);
+        section.addCourse(this);
+    }
 
     public void addStudent(Student student) {
         studentList.add(student);

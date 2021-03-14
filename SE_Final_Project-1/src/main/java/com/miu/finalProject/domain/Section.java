@@ -1,19 +1,23 @@
 package com.miu.finalProject.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+@Data
+//@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 public class Section {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int sectionID;
 	private String sectionName;
-//	@OneToMany(cascade=CascadeType.ALL,mappedBy="section")
-	//private Set<Course> courseList = new HashSet<>();
-	//private Entry entry;
-
+	@ManyToMany(mappedBy = "sectionList")
+	private Set<Course> courseList = new HashSet<>();
 	public Section() {
 
 	}
@@ -40,9 +44,10 @@ public class Section {
 		this.sectionName = sectionName;
 	}
 
-//	public Set<Course> getCourseList() {
-//		return courseList;
-//	}
+	public void addCourse(Course course) {
+		courseList.add(course);
+		course.addSection(this);
+	}
 //
 //	public void setCourseList(Set<Course> courseList) {
 //		this.courseList = courseList;
@@ -56,4 +61,12 @@ public class Section {
 //		this.entry = entry;
 //	}
 
+	@Override
+	public String toString() {
+		return "Section{" +
+				"sectionID=" + sectionID +
+				", sectionName='" + sectionName + '\'' +
+				", courseList=" + courseList +
+				'}';
+	}
 }
