@@ -11,12 +11,6 @@ import java.util.List;
 @Repository
 public interface BlockDao extends JpaRepository<Block,Long> {
 
-//    @Query("select s from Block s where s.blockID= :blockID")
-//    public Block findBlockByBlockID(@Param("blockID") int blockID);
-//
-//    @Query("select s from Block s where s.blockName= :blockName")
-//    public Block findBlockByBlockName(@Param("blockName") String blockName);
-//
-//    @Query("select s from Block s")
-//    public List<Block> getAllBlock();
+
+
 }

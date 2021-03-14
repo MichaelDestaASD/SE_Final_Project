@@ -17,7 +17,7 @@ public class EntryController {
     @Autowired
     EntryService entryService;
 
-    @GetMapping("Entrylist")
+    @GetMapping("list")
     public String listEntry(Model model){
         List<Entry> entries = entryService.findAll();
         model.addAttribute("entries",entries);
@@ -34,12 +34,12 @@ public class EntryController {
     @PostMapping("/save")
     public String saveEntry(@ModelAttribute("entry") Entry entry){
         entryService.save(entry);
-        return "redirect:/entries/Entrylist";
+        return "redirect:/entries/list";
     }
     @GetMapping("/delete")
     public String delete(@RequestParam("entryId") int Id){
         entryService.deleteById(Id);
-        return "redirect:/entries/Entrylist";
+        return "redirect:/entries/list";
     }
      @GetMapping("/update")
     public String update(@RequestParam("entryId") int Id, Model model){
