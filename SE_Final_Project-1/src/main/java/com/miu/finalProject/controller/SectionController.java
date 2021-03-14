@@ -2,13 +2,14 @@ package com.miu.finalProject.controller;
 
 import java.util.List;
 
+import com.miu.finalProject.domain.Course;
+import com.miu.finalProject.service.CourseService;
+import com.miu.finalProject.service.FacultyService;
+import com.miu.finalProject.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.miu.finalProject.domain.Section;
 import com.miu.finalProject.service.SectionService;
@@ -17,6 +18,10 @@ import com.miu.finalProject.service.SectionService;
 @RequestMapping("/sections")
 public class SectionController {
 	private SectionService sectionService;
+	@Autowired
+	CourseService courseService;
+	@Autowired
+	FacultyService facultyService;
 
 	public SectionController(SectionService sectionService) {
 		super();
@@ -59,10 +64,19 @@ public class SectionController {
 		return "sections/section-form";
 	}
 
+	@GetMapping("/courses")
+	public String getCourses(@RequestParam("sectionId") int Id, Model model){
+		Section section = sectionService.findById(Id);
+		System.out.println("section**********************************************.................." + section);
+		model.addAttribute("section",section);
+//        model.addAttribute("faculties", facultyService.findById(courseid));
+		return "course/list-courses";
+	}
+
 	@PostMapping("/save")
 	public String saveSection(@ModelAttribute("section") Section section) {
 
-		// save the student
+		// save the section
 		sectionService.save(section);
 
 		// use a redirect to prevent duplicate submissions
