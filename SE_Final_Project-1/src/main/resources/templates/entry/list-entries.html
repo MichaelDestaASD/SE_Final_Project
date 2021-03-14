@@ -21,6 +21,7 @@
             <tr>
                 <th>Entry Month</th>
                 <th>Entry Year</th>
+                <th>Block list</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -28,6 +29,10 @@
             <tr th:each="entry : ${entries}">
               <td th:text="${entry.getMonth()}"/>
                 <td th:text="${entry.getYear()}"/>
+
+                <td>
+                    <a th:href="@{'/entries/blocks/' + ${entry.getId()} }">View blocks</a>
+                </td>
 
                 <td>
                     <!-- Add "update" button/link -->

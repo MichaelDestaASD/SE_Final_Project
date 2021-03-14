@@ -22,7 +22,13 @@
 
         <input type="text" th:field="*{year}" class="form-control mb-4 col-4" placeholder="Entry Year">
 
-
+        <label for="block">Block</label>
+        <select class="form-control mb-4 col-4" id="block"  th:field="*{blockList}" size="5" multiple="multiple" >
+            <option th:each="b : ${blocks}"
+                    th:value="${{b}}"
+                    th:text="${b.getBlockName()}">
+            </option>
+        </select>
 
 
         <button type="submit" class="btn btn-info col-2">Save</button>

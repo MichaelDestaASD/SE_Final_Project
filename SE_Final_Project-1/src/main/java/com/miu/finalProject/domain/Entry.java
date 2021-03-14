@@ -29,6 +29,7 @@ public class Entry {
 
 
     @OneToMany()
+    @JoinColumn(name = "entry_id")
     private Set<Block> blockList = new HashSet<Block>();
 
 

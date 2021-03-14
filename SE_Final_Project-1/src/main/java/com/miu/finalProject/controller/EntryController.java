@@ -1,6 +1,8 @@
 package com.miu.finalProject.controller;
 
-import com.miu.finalProject.domain.Entry;
+import com.miu.finalProject.domain.*;
+import com.miu.finalProject.service.BlockServiceInterface;
+import com.miu.finalProject.service.CourseService;
 import com.miu.finalProject.service.EntryService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -16,6 +19,10 @@ public class EntryController {
 
     @Autowired
     EntryService entryService;
+    @Autowired
+    BlockServiceInterface blockServiceInterface;
+    @Autowired
+    CourseService courseService;
 
     @GetMapping("list")
     public String listEntry(Model model){
@@ -27,6 +34,9 @@ public class EntryController {
     @RequestMapping("/AddEntry")
     public String showFormEntry(Model model){
         Entry theEntry = new Entry();
+        List<Block> blocks = blockServiceInterface.findAll();
+
+        model.addAttribute("blocks", blocks);
         model.addAttribute("entry",theEntry);
         return "entry/entry-form";
     }
@@ -46,5 +56,13 @@ public class EntryController {
         Entry entry= entryService.findById(Id);
         model.addAttribute("entry",entry);
         return "entry/entry-form";
+    }
+    @GetMapping("/blocks/{entryid}")
+    public String getCourses(Model model, @PathVariable Long entryid) {
+        Entry entry = entryService.findById(entryid);
+        System.out.println("entry.................." + entry);
+        model.addAttribute("entry", entry);
+//        model.addAttribute("faculties", facultyService.findById(courseid));
+        return "entry/block-list";
     }
 }
