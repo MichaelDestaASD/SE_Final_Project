@@ -57,8 +57,8 @@ public class EntryController {
         model.addAttribute("entry",entry);
         return "entry/entry-form";
     }
-    @GetMapping("/blocks/{entryid}")
-    public String getCourses(Model model, @PathVariable Long entryid) {
+    @GetMapping("/blocks")
+    public String getCourses(Model model, @RequestParam("entryId") Long entryid) {
         Entry entry = entryService.findById(entryid);
         System.out.println("entry.................." + entry);
         model.addAttribute("entry", entry);

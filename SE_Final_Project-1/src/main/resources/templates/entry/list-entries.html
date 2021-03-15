@@ -31,7 +31,7 @@
                 <td th:text="${entry.getYear()}"/>
 
                 <td>
-                    <a th:href="@{'/entries/blocks/' + ${entry.getId()} }">View blocks</a>
+                    <a th:href="@{/entries/blocks(entryId=${entry.id})}">View blocks</a>
                 </td>
 
                 <td>
