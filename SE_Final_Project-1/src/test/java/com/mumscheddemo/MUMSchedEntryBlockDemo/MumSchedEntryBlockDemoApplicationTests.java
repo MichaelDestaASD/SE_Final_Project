@@ -3,11 +3,13 @@ package com.mumscheddemo.MUMSchedEntryBlockDemo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MumSchedEntryBlockDemoApplicationTests {
+@SpringBootApplication
+public class MumSchedEntryBlockDemoApplication {
 
-	@Test
-	void contextLoads() {
+	public static void main(String[] args) {
+
+		SpringApplication.run(MumSchedEntryBlockDemoApplication.class, args);
 	}
 
 }
+
