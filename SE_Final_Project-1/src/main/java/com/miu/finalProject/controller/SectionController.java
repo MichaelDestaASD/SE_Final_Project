@@ -45,7 +45,8 @@ public class SectionController {
 
 		// create model attribute to bind form data
 		Section section = new Section();
-
+        List<Course> courses = courseService.findAll();
+        theModel.addAttribute("courses",courses);
 		theModel.addAttribute("section", section);
 
 		return "sections/section-form";
@@ -56,7 +57,8 @@ public class SectionController {
 
 		// get the student from the service
 		Section section = sectionService.findById(Id);
-
+		List<Course> courses = courseService.findAll();
+		theModel.addAttribute("courses",courses);
 		// set student as a model attribute to pre-populate the form
 		theModel.addAttribute("section", section);
 
@@ -70,7 +72,7 @@ public class SectionController {
 		System.out.println("section**********************************************.................." + section);
 		model.addAttribute("section",section);
 //        model.addAttribute("faculties", facultyService.findById(courseid));
-		return "course/list-courses";
+		return "sections/list-courses";
 	}
 
 	@PostMapping("/save")

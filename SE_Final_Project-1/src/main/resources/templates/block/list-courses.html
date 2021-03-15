@@ -12,7 +12,7 @@
         <hr>
         <a th:href="@{/block/showFormForAdd}"
            class="btn btn-primary btn-sm mb-3">
-            Add New Course in Block
+            Add New Course and assign section in a Block
         </a>
 
         <table class="table table-bordered table-striped">
@@ -22,6 +22,7 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>course view </th>
+                <th>section view </th>
                 <th>Action</th>
 
             </tr>
@@ -36,6 +37,9 @@
                 <td th:text="${block.getEndDate()}"/>
                 <td>
                     <a th:href="@{'/block/courses/' + ${block.getBlockID()} }">View courses</a>
+                </td>
+                <td>
+                    <a th:href="@{'/block/sections/' + ${block.getBlockID()} }">View sections</a>
                 </td>
 <!--                <td>-->
 <!--                    <a th:href="@{'/course/faculties/' + ${block.getBlockID()} }">View faculties</a>-->

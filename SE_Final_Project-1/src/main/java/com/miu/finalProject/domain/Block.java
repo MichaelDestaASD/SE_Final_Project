@@ -37,4 +37,8 @@ public class Block {
     @JoinColumn(name = "block_id")
     Set<Course> courses = new HashSet<>();
 
+    @OneToMany()
+    @JoinColumn(name = "section_id")
+    Set<Section> sections = new HashSet<>();
+
 }

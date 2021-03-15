@@ -1,10 +1,7 @@
 package com.miu.finalProject.controller;
 
-import com.miu.finalProject.domain.Block;
-import com.miu.finalProject.domain.Course;
+import com.miu.finalProject.domain.*;
 
-import com.miu.finalProject.domain.Faculty;
-import com.miu.finalProject.domain.Student;
 import com.miu.finalProject.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +24,8 @@ public class BlockRegController {
     CourseService courseService;
     @Autowired
     BlockServiceInterface blockServiceInterface;
+    @Autowired
+    SectionService sectionService;
 
 
     @GetMapping("/list")
@@ -40,7 +39,7 @@ public class BlockRegController {
     @RequestMapping("/showFormForAdd")
     public String showForm(Model model) {
         Block block = new Block();
-
+        List<Section> sections = sectionService.findAll();
         List<Course> courses = courseService.findAll();
         List<Faculty> faculties = new ArrayList<>();
         List<Student> studentList = new ArrayList<>();
@@ -54,6 +53,7 @@ public class BlockRegController {
         model.addAttribute("students", studentList);
         model.addAttribute("faculties", faculties);
         model.addAttribute("courses", courses);
+        model.addAttribute("sections",sections);
         model.addAttribute("block", block);
         return "block/course-form";
     }
@@ -73,23 +73,13 @@ public class BlockRegController {
 
     @GetMapping("/update")
     public String update(@RequestParam("blockid") Long Id, Model model) {
-        Block block = new Block();
-
+       Block block = blockServiceInterface.findById(Id);
+        List<Section> sections = sectionService.findAll();
         List<Course> courses = courseService.findAll();
-        List<Faculty> faculties = new ArrayList<>();
-        List<Student> studentList = new ArrayList<>();
-        //    block.setCourses(courses);
-
-        courses.stream().map(course -> faculties.addAll(course.getFacultyList()));
-        courses.stream().map(course -> studentList.addAll(course.getStudentList()));
-        faculties.stream().forEach(fa -> System.out.println(".............." + fa.getFacultyName()));
-        studentList.stream().forEach(student -> System.out.println("................." + student.getStudentID()));
-        //  System.out.println("_____________"+ faculties.get(0).getEmail());
-        model.addAttribute("students", studentList);
-        model.addAttribute("faculties", faculties);
         model.addAttribute("courses", courses);
-        model.addAttribute("block", block);
-        return "course/course-form";
+        model.addAttribute("sections",sections);
+       model.addAttribute("block",block);
+        return "block/course-form";
     }
 
     @GetMapping("/courses/{blockid}")
@@ -99,6 +89,16 @@ public class BlockRegController {
         model.addAttribute("block", block);
 //        model.addAttribute("faculties", facultyService.findById(courseid));
         return "block/course-list";
+    }
+
+
+    @GetMapping("/sections/{blockid}")
+    public String getSections(Model model, @PathVariable Long blockid) {
+        Block block = blockServiceInterface.findById(blockid);
+        System.out.println("block.................." + block);
+        model.addAttribute("block", block);
+//        model.addAttribute("faculties", facultyService.findById(courseid));
+        return "block/section-list";
     }
 
 

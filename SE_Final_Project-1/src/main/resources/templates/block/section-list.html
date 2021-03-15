@@ -21,29 +21,28 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tr>
+            <th>section Name</th>
+            <th>course list</th>
 
-            <th>course Name</th>
-            <th>faculty list</th>
-            <th>student list</th>
 
         </tr>
         </thead>
 
         <tbody>
 
-        <tr th:each="c : ${block.getCourses()}">
+        <tr th:each="s : ${block.getSections()}">
 
             <td>
                 <!--                    <div th:text="${stats.index + 1}"></div>-->
-                <span th:text="${c.getCoursename() }"></span>
+                <span th:text="${s.getSectionName() }"></span>
             </td>
 
             <td>
-                <a th:href="@{'/courses/faculties/' + ${c.getId()} }">View faculties</a>
+                <a th:href="@{/sections/courses(sectionId=${s.getSectionID()}) }">View courses</a>
             </td>
-            <td>
-                <a th:href="@{'/courses/students/' + ${c.getId()} }">View students</a>
-            </td>
+<!--            <td>-->
+<!--                <a th:href="@{'/courses/students/' + ${s.getSectionID()} }">View students</a>-->
+<!--            </td>-->
 
 
             <!--            <td>-->

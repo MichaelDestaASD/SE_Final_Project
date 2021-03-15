@@ -29,6 +29,15 @@
 			
 			<input type="text" th:field="*{sectionName}"
 					class="form-control mb-4 col-4" placeholder="Section Name">
+
+			<label for="course">Course</label>
+			<select class="form-control mb-4 col-4" id="course"  th:field="*{courses}" size="5" multiple="multiple" >
+				<option th:each="c : ${courses}"
+						th:value="${{c}}"
+						th:text="${c.getCoursename()}">
+				</option>
+			</select>
+
 			<button type="submit" class="btn btn-info col-2">Save</button>
 						
 		</form>
