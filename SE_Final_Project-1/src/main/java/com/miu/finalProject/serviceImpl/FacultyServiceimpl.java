@@ -4,6 +4,7 @@ import com.miu.finalProject.dao.FacultyRepository;
 import com.miu.finalProject.domain.Faculty;
 import com.miu.finalProject.service.FacultyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
