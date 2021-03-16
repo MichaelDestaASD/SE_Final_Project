@@ -13,14 +13,8 @@ package com.miu.finalProject.controller;
 //
 //import java.util.List;
 
-import com.miu.finalProject.domain.Block;
-import com.miu.finalProject.domain.Course;
-import com.miu.finalProject.domain.Faculty;
-import com.miu.finalProject.domain.Student;
-import com.miu.finalProject.service.BlockServiceInterface;
-import com.miu.finalProject.service.CourseService;
-import com.miu.finalProject.service.FacultyService;
-import com.miu.finalProject.service.StudentService;
+import com.miu.finalProject.domain.*;
+import com.miu.finalProject.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -40,6 +35,8 @@ public class AdminController {
     private FacultyService facultyService;
     @Autowired
     private StudentService studentService;
+    @Autowired
+    private EntryService entryService;
     @GetMapping("/courseList")
     public String listCourse(Model model){
         List<Course> courses = courseService.findAll();
@@ -71,5 +68,13 @@ public class AdminController {
         List<Block> blocks = blockService.findAll();
         model.addAttribute("blocks",blocks );
         return "block/list-blocks";
+    }
+    @GetMapping("/manageSchedule")
+    public String manageSchedule(Model model){
+        Entry entry=new Entry();
+        Set<Block> blocks = entry.getBlockList();
+        model.addAttribute("entry",entry);
+        model.addAttribute("blocks",blocks );
+        return "schedule/manageSchedule";
     }
 }

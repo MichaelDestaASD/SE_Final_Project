@@ -71,7 +71,7 @@ public class FacultyController {
     }
 
     @GetMapping("/profile")
-    public String updateProfile(Model model) {
+    public String seeprofile(Model model) {
         Faculty faculty = getLoggedInFaculty();
         model.addAttribute("faculty", faculty);
         // List<String> specializations = Arrays.asList("DATA SCIENCE", "WEB APPLICATIONS", "SOFTWARE DESIGN");
@@ -91,7 +91,7 @@ public class FacultyController {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        String userName = auth.getName();
 //        return facultyService.findByUserName(userName);
-        Faculty faculty = facultyService.findById(1L);
+        Faculty faculty = facultyService.findById(7L);
         return faculty;
     }
 
