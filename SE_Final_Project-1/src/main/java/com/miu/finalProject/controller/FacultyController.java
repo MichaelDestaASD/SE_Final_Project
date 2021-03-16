@@ -57,5 +57,30 @@ public class FacultyController {
         return "redirect:/faculty/";
 
     }
-
+    @GetMapping("/facultypage")
+    public String facultypage(Model model){
+//        List<Faculty> faculties = facultyService.findAll();
+//        model.addAttribute("faculties",faculties );
+        return "faculty/facultypage";
+    }
+    @GetMapping("/profile")
+    public String updateProfile(Model model){
+        Faculty faculty = getLoggedInFaculty();
+        model.addAttribute("faculty", faculty);
+       // List<String> specializations = Arrays.asList("DATA SCIENCE", "WEB APPLICATIONS", "SOFTWARE DESIGN");
+       // model.addAttribute("specializations", specializations);
+        return "faculty/profileUpdate";
+    }
+    @GetMapping("/courses")
+    public String displayCourses(Model model){
+//        List<Faculty> faculties = facultyService.findAll();
+//        model.addAttribute("faculties",faculties );
+        return "faculty/manageCourses";
+    }
+    public Faculty getLoggedInFaculty() {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        String userName = auth.getName();
+//        return facultyService.findByUserName(userName);
+        return null;
+    }
 }

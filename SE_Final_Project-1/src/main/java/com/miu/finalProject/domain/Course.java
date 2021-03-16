@@ -36,13 +36,6 @@ public class Course {
     )
 
     private List<Faculty> facultyList = new ArrayList<>();
-//    @ManyToMany
-//    @JoinTable(name = "Course_Section",
-//            joinColumns = { @JoinColumn(name = "Course_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "section_id") }
-//    )
-//
-//    private List<Section> sectionList = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "Course_Student",

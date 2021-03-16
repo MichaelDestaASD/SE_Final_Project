@@ -1,0 +1,75 @@
+package com.miu.finalProject.controller;
+
+//import com.miu.finalProject.domain.Block;
+//import com.miu.finalProject.domain.Course;
+//import com.miu.finalProject.domain.Faculty;
+//import com.miu.finalProject.domain.Student;
+//import com.miu.finalProject.service.*;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.ui.Model;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//
+//import java.util.List;
+
+import com.miu.finalProject.domain.Block;
+import com.miu.finalProject.domain.Course;
+import com.miu.finalProject.domain.Faculty;
+import com.miu.finalProject.domain.Student;
+import com.miu.finalProject.service.BlockServiceInterface;
+import com.miu.finalProject.service.CourseService;
+import com.miu.finalProject.service.FacultyService;
+import com.miu.finalProject.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/admin")
+public class AdminController {
+    @Autowired
+    private CourseService courseService;
+    @Autowired
+    private BlockServiceInterface blockService;
+    @Autowired
+    private FacultyService facultyService;
+    @Autowired
+    private StudentService studentService;
+    @GetMapping("/courseList")
+    public String listCourse(Model model){
+        List<Course> courses = courseService.findAll();
+        model.addAttribute("courses",courses);
+        return "students/list-courses";
+    }
+    @GetMapping("/facultyList")
+    public String facultyList(Model model){
+         List<Faculty> faculties = facultyService.findAll();
+        model.addAttribute("faculties",faculties );
+        return "faculty/addsucess";
+    }
+
+    @GetMapping("/adminpage")
+    public String Adminpage(Model model){
+//        List<Faculty> faculties = facultyService.findAll();
+//        model.addAttribute("faculties",faculties );
+        return "admin/adminpage";
+    }
+
+    @GetMapping("/student")
+    public String studentList(Model model){
+        List<Student> students = studentService.findAll();
+        model.addAttribute("students",students );
+        return "admin/list-students";
+    }
+    @GetMapping("/blockList")
+    public String blockList(Model model){
+        List<Block> blocks = blockService.findAll();
+        model.addAttribute("blocks",blocks );
+        return "block/list-blocks";
+    }
+}
